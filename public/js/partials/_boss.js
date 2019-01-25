@@ -5,8 +5,15 @@ export class Boss {
         this.name = name;
         this.ptLife = ptLife;
         this.ptAttack = ptAttack;
+        this.attack = function(cible){
+            cible.ptLife -= this.ptAttack;
+            alert(`${this.name} attaque ${cible.name} pour ${this.ptAttack} points de dégats. ${cible.name} n'a plus que ${cible.ptLife} points de vie.`);
+            if(cible.ptLife <= 0){
+                alert(`${cible.name} est mort.`);
+            }
+        }
         this.specialAttack = function(){
-            if(true){ // TOGGLE :  true --- this.ptLife <= 20
+            if(this.ptLife <= 20){ // TOGGLE :  true --- this.ptLife <= 20
                 let numRand = Math.round(Math.random() * (questions.length - 1));
                 let playerAnswer;
                 let i = 1;
@@ -27,3 +34,4 @@ export class Boss {
         }
     }
 }
+
